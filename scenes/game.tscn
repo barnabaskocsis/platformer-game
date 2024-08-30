@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=4 uid="uid://bjxyy6uhrujkh"]
+
+[ext_resource type="PackedScene" uid="uid://mn6qt5nyuxoo" path="res://scenes/player.tscn" id="1_8uwx0"]
+[ext_resource type="Texture2D" uid="uid://dg3d2w4m5ud4k" path="res://assets/sprites/tileset.png" id="2_efsuu"]
+[ext_resource type="PackedScene" uid="uid://sa8t0i85xytv" path="res://scenes/coin.tscn" id="3_go40q"]
+[ext_resource type="PackedScene" uid="uid://bjsnlx1mxew1c" path="res://scenes/fps.tscn" id="3_lbpyy"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b6p3t"]
+texture = ExtResource("2_efsuu")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_5h4ex"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_b6p3t")
+
+[node name="Game" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAYAAAABAAEAAAAKAAYAAAABAAEAAAALAAYAAAABAAEAAAAMAAYAAAABAAEAAAANAAYAAAABAAEAAAAOAAYAAAABAAEAAAAPAAYAAAABAAEAAAAAAAQAAAAAAAAAAAD//wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD8/wQAAAAAAAAAAAD8/wMAAAABAAAAAAD8/wIAAAABAAAAAAD8/wEAAAABAAAAAAD8/wAAAAABAAAAAAD8////AAABAAAAAAD8//7/AAABAAAAAAD8/wUAAAABAAAAAAD8/wYAAAABAAAAAAD8/wcAAAABAAAAAAD9/wUAAAABAAAAAAD9/wYAAAABAAAAAAD9/wcAAAABAAAAAAD+/wcAAAABAAAAAAD//wcAAAABAAAAAAAAAAcAAAABAAAAAAABAAcAAAABAAAAAAACAAcAAAABAAAAAAADAAcAAAABAAAAAAAEAAcAAAABAAAAAAAFAAcAAAABAAAAAAAGAAcAAAABAAAAAAAHAAcAAAABAAAAAAAIAAcAAAABAAAAAAAJAAcAAAABAAAAAAAKAAcAAAABAAAAAAALAAcAAAABAAAAAAAMAAcAAAABAAAAAAANAAcAAAABAAAAAAAOAAcAAAABAAAAAAAPAAcAAAABAAAAAAAHAAYAAAABAAAAAAAGAAYAAAABAAAAAAAFAAYAAAABAAAAAAAEAAUAAAABAAAAAAADAAUAAAABAAAAAAACAAUAAAABAAAAAAABAAUAAAABAAAAAAAAAAUAAAABAAAAAAD//wUAAAABAAAAAAD+/wUAAAABAAAAAAD+/wYAAAABAAAAAAD//wYAAAABAAAAAAAAAAYAAAABAAAAAAABAAYAAAABAAAAAAACAAYAAAABAAAAAAADAAYAAAABAAAAAAAEAAYAAAABAAAAAAAFAAUAAAABAAAAAAAGAAUAAAABAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAOAAMAAAAAAAAAAAAQAAYAAAABAAEAAAARAAYAAAABAAEAAAASAAYAAAABAAEAAAATAAYAAAABAAEAAAAUAAYAAAABAAEAAAAVAAYAAAABAAEAAAAWAAYAAAABAAEAAAAXAAYAAAABAAEAAAAYAAYAAAABAAEAAAAZAAYAAAABAAEAAAATAAUAAAABAAEAAAATAAQAAAABAAEAAAAUAAQAAAABAAEAAAAUAAMAAAABAAEAAAAVAAMAAAABAAEAAAAVAAQAAAABAAEAAAAWAAUAAAABAAEAAAAVAAUAAAABAAEAAAAUAAUAAAABAAEAAAAXAAUAAAABAAEAAAAXAAQAAAABAAEAAAAWAAQAAAABAAEAAAAWAAMAAAABAAEAAAAQAP//AAAAAAAAAAARAP//AAAAAAAAAAASAP//AAAAAAAAAAATAP//AAAAAAAAAAAHAP//AAAAAAAAAAAYAAEAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_5h4ex")
+
+[node name="Player" parent="." instance=ExtResource("1_8uwx0")]
+z_index = 5
+position = Vector2(-14, 114)
+
+[node name="FPS" parent="Player" instance=ExtResource("3_lbpyy")]
+offset_left = -188.0
+offset_top = -106.0
+offset_right = -148.0
+offset_bottom = -83.0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(1, 0)
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+
+[node name="Coin" parent="." instance=ExtResource("3_go40q")]
+position = Vector2(193, 95)
+
+[node name="Coin2" parent="." instance=ExtResource("3_go40q")]
+position = Vector2(351, 10)
+
+[node name="Coin3" parent="." instance=ExtResource("3_go40q")]
+position = Vector2(68, -22)
+
+[node name="Coin4" parent="." instance=ExtResource("3_go40q")]
+position = Vector2(573, -54)
+
+[node name="Coin5" parent="." instance=ExtResource("3_go40q")]
+position = Vector2(783, 11)
